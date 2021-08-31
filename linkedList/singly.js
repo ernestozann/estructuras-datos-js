@@ -79,6 +79,28 @@ class MySinglyLinkedList {
 
 		return currentNode;
 	}
+	remove(index) {
+		if (index >= this.length) {
+			console.error(`index:${index} doesn't exist in the array :(`);
+			return this;
+		} else if (index == 0) {
+			this.head = this.head.next;
+			this.length--;
+			return this;
+		} else if (index == this.length-1) {
+			const firstPointer = this.getTheIndex(index-1);
+			firstPointer.next = null;
+			this.tail = firstPointer;
+			this.length--;
+			return this;
+		} else {
+			const firstPointer = this.getTheIndex(index-1);
+			const pointerToRemove = firstPointer.next;
+			firstPointer.next = pointerToRemove.next;
+			this.length--;
+			return this;
+		}
+	}
 }
 
 let myLinkedList = new MySinglyLinkedList(1);
