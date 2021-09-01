@@ -29,7 +29,10 @@ class Stack {
 		return this;
 	}
 	pop() {
-		if (this.length === 1) {
+		if (this.length === 0) {
+			console.error("this stack it's already empty");
+			return this;
+		} else if (this.length === 1) {
 			this.top = null;
 			this.bottom = null;
 			this.length--;
